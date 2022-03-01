@@ -7,7 +7,7 @@ or with yarn
 `yarn add bayanplus-js`
 
 ### Basic usage
-```
+```javascript
 import bayanplus from 'bayanplus-js'
 
 // first and most important initiliaze the app with the project id
