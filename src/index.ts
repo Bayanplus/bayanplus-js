@@ -18,6 +18,7 @@ const init = (options: BayanplusOptions): void => {
   document.head.appendChild(script)
 };   
 
+
 let events : Array<string> = []
 const track  = (eventName: string) : void => {
   events.push(eventName)
