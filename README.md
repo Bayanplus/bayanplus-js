@@ -33,5 +33,3 @@ bayanplus.init({
 bayanplus.track('Buy Book')
 
 ```
-## Integrate it with your favourite framework 🖤
-* [Next.js](https://docs.bayanplus.co) 
