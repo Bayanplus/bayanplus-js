@@ -1,4 +1,12 @@
 {
+  "release": {
+    "git": {
+      "commitMessage": "chore: release v${version}"
+    },
+    "github": {
+      "release": true
+    }
+  },
   "version": "0.1.0",
   "license": "MIT",
   "main": "dist/index.js",
@@ -19,7 +27,6 @@
     "size": "size-limit",
     "analyze": "size-limit --why"
   },
-  "peerDependencies": {},
   "husky": {
     "hooks": {
       "pre-commit": "tsdx lint"
@@ -47,6 +54,7 @@
   "devDependencies": {
     "@size-limit/preset-small-lib": "^7.0.8",
     "husky": "^7.0.4",
+    "release-it": "^14.13.1",
     "size-limit": "^7.0.8",
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
