@@ -15,6 +15,9 @@ const init = (options: BayanplusOptions): void => {
   if (options.trackLocalhost){
     script.dataset.trackLocalhost = '';
   }
+  if(options.exclude){
+    script.dataset.exclude = options.exclude.join(', ');
+  }
   document.head.appendChild(script)
 };   
 
