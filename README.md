@@ -27,24 +27,24 @@ or with yarn
 ## Basic usage
 
 ```javascript
-import bayanplus from 'bayanplus-js'
+import bayanplus from 'bayanplus-js';
 
 // first and most important initiliaze the app with the project id
 // you can find the project id on https://bayanplus.co
 // you only need to do this once
 bayanplus.init({
-    projectId: 'xxxxx'
-})
+  projectId: 'xxxxx',
+});
 
 // now you can track any event you want like
 // you can track as many events you want on any file as long as you initiliazed the app
-bayanplus.event('Buy Book')
+bayanplus.event('Buy Book');
 
 // after you user has logged in, you can create profile for the user
 // by using `set` function
 bayanplus.user.set({
-    name:"Salah"
-    email:"Salah@gmail.com",
-    isDarkMode:true
-})
+  name: 'Salah',
+  email: 'Salah@gmail.com',
+  isDarkMode: true,
+});
 ```
