@@ -1,38 +1,62 @@
-import type {  Bayanplus, BayanplusOptions } from './types';
+import type {
+  Bayanplus,
+  BayanplusOptions,
+  MetaData,
+  QueueDataTypes,
+} from './types';
 
-declare global {
-  interface Window {
-     bayanplus: (eventName: string) => void;
-  }
-}
-const isBrowser = typeof window !== undefined
+const isBrowser: boolean = typeof window !== undefined;
+const SCRIPT_URL: string = 'https://cdn.bayanplus.co/bp.js';
+let queueData: Array<QueueDataTypes> = [];
 
+const handleQueue = () => {
+  if (isBrowser && !window.bayanplus) return;
+  bayanplus.event = window.bayanplus.event;
+  bayanplus.user = window.bayanplus.user;
+  queueData.forEach(({ type, data }) => {
+    if (type === 'event') {
+      window.bayanplus.event(data as string);
+    }
+    if (type === 'user') {
+      window.bayanplus.user.set(data as MetaData);
+    }
+  });
+  queueData = [];
+};
+const createQueue =
+  (type: QueueDataTypes['type']) => (data: QueueDataTypes['data']) => {
+    queueData.push({ type, data });
+    if (isBrowser && !window.bayanplus) return;
+    handleQueue();
+  };
 const init = (options: BayanplusOptions): void => {
+  if (!isBrowser || window.bayanplus) return;
   const script = document.createElement('script');
   script.defer = true;
-  script.src = 'https://cdn.bayanplus.co/bp.js';
+  script.src = SCRIPT_URL;
   script.dataset.pid = options.projectId;
-  if (options.trackLocalhost){
+  if (options.trackLocalhost) {
     script.dataset.trackLocalhost = '';
   }
-  if(options.exclude){
+  if (options.exclude) {
     script.dataset.exclude = options.exclude.join(', ');
   }
-  document.head.appendChild(script)
-};   
+  script.onload = handleQueue;
+  document.head.appendChild(script);
+};
 
+const getUser = (): MetaData => {
+  if (isBrowser && !window.bayanplus) return {};
+  return window.bayanplus?.user?.get;
+};
 
-let events : Array<string> = []
-const track  = (eventName: string) : void => {
-  events.push(eventName)
-  if(isBrowser && !window.bayanplus) return
-  events.forEach(window.bayanplus)
-  events = []
-}
-const bayanplus : Bayanplus = {
+const bayanplus: Bayanplus = {
   init,
-  track
-}
+  user: {
+    set: createQueue('user'),
+    get: getUser,
+  },
+  event: createQueue('event'),
+};
 
-export default bayanplus
-
+export default bayanplus;
