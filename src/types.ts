@@ -1,3 +1,14 @@
+export type VoidFunction<T> = (arg: T) => void;
+
+export type ReturnFunction<T> = () => T;
+
+export type MetaData = {
+  [key: string]: any;
+};
+export type QueueDataTypes = {
+  type: 'event' | 'user';
+  data: string | MetaData;
+};
 /**
  * Extra options
  */
@@ -15,6 +26,15 @@ export type BayanplusOptions = {
   exclude?: string[];
 };
 export type Bayanplus = {
-  track: (eventName: string) => void;
-  init: (options: BayanplusOptions) => void;
+  init: VoidFunction<BayanplusOptions>;
+  event: VoidFunction<string>;
+  user: {
+    set: VoidFunction<MetaData>;
+    get: ReturnFunction<MetaData>;
+  };
 };
+declare global {
+  interface Window {
+    bayanplus: Bayanplus;
+  }
+}
