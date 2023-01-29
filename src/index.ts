@@ -36,7 +36,10 @@ const init = (options: BayanplusOptions): void => {
   script.src = SCRIPT_URL;
   script.dataset.pid = options.projectId;
   if (options.trackLocalhost) {
-    script.dataset.trackLocalhost = '';
+    script.dataset["track-Localhost"] = '';
+  }
+  if (options.isDev) {
+    script.dataset.dev = '';
   }
   if (options.exclude) {
     script.dataset.exclude = options.exclude.join(', ');

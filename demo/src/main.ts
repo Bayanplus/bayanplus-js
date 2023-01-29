@@ -13,6 +13,7 @@ const run = async () => {
     projectId: 'xxxxxx',
     trackLocalhost: true,
     exclude: ['/exclude'],
+    isDev: true,
   });
   await sleep(1000);
   console.log('after load bayanplus.user.get(): ', bayanplus.user.get());
