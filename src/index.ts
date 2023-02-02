@@ -35,9 +35,7 @@ const init = (options: BayanplusOptions): void => {
   script.defer = true;
   script.src = SCRIPT_URL;
   script.dataset.pid = options.projectId;
-  if (options.trackLocalhost) {
-    script.dataset.trackLocalhost = '';
-  }
+ 
   if (options.isDev) {
     script.dataset.dev = '';
   }

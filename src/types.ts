@@ -15,10 +15,6 @@ export type QueueDataTypes = {
 export type BayanplusOptions = {
   projectId: string;
   /**
-   * Whether you want events to be tracked from localhost
-   */
-  trackLocalhost?: boolean;
-  /**
    * are you in development mode? (your data won't be tracked)
    */
   isDev?: boolean;
