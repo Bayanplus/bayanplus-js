@@ -11,7 +11,6 @@ const run = async () => {
   console.log('before load, bayanplus.user.get(): ', bayanplus.user.get());
   bayanplus.init({
     projectId: 'xxxxxx',
-    trackLocalhost: true,
     exclude: ['/exclude'],
     isDev: true,
   });
