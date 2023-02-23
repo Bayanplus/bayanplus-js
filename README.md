@@ -1,11 +1,10 @@
 # Bayanplus JS
 
-Frontend library written in Typescript for [Bayanplus](https://bayanplus.co)
+Lightweight Frontend library written in Typescript for [Bayanplus](https://bayanplus.co)
 
 [![version](https://img.shields.io/npm/v/bayanplus-js)](https://www.npmjs.com/package/bayanplus-js)
 [![downloads](https://img.shields.io/npm/dm/bayanplus-js)](https://www.npmjs.com/package/bayanplus-js)
-[![Bundle](https://flat.badgen.net/bundlephobia/minzip/bayanplus-js)](https://bundlephobia.com/result?p=bayanplus-js@latest)
-
+ 
 ## Features ✨
 
 - You can use it with any frontend framework you want
